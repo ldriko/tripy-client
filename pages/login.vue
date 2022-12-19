@@ -1,5 +1,10 @@
 <script setup>
 import { useRequest } from '~/composables/request'
+import TextField from '~/components/form/text-field.vue'
+
+definePageMeta({
+  layout: 'auth'
+})
 
 const form = reactive({
   email: null,
@@ -20,7 +25,6 @@ const login = async () => {
 </script>
 
 <template>
-  <input v-model="form.email" type="email">
-  <input v-model="form.password" type="password">
-  <button @click="login">Masuk</button>
+  <h1 class="text-xl font-bold">Mulai perjalananmu di Tripy dengan mendaftarkan akunmu</h1>
+  <text-field/>
 </template>
