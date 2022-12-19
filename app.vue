@@ -1,3 +1,3 @@
 <template>
-  <div>Hello World</div>
+  <nuxt-page></nuxt-page>
 </template>
