@@ -1,9 +1,13 @@
-export default {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   theme: {
     extend: {
       colors: {
         primary: '#2148c0',
-        primaryVariant: '#244dcc'
+        'primary-variant': '#244dcc'
+      },
+      height: {
+        screen: 'calc(var(--screen-height) * 100)'
       }
     }
   }
