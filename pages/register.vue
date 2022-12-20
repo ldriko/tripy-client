@@ -1,10 +1,8 @@
 <script setup>
 definePageMeta({
-  layout: 'auth',
-  middleware: 'guest'
+  layout: 'auth'
 })
 </script>
-
 <template>
   <div>Register</div>
 </template>
