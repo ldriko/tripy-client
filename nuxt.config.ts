@@ -15,12 +15,27 @@ export default defineNuxtConfig({
   css: [
     '@/assets/css/index.css'
   ],
+  imports: {
+    dirs: ['stores']
+  },
   modules: [
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: [
+          // automatically imports `defineStore`
+          'defineStore', // import { defineStore } from 'pinia'
+          // automatically imports `defineStore` as `definePiniaStore`
+          ['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
+        ],
+      }
+    ]
   ],
   runtimeConfig: {
     public: {
       baseURL: 'http://localhost/v1'
     }
   },
+  ssr: false
 })
