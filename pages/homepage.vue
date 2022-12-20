@@ -82,11 +82,13 @@
     </div>
   </div>
 
-  <div class="mt-10 mx-auto flex">
-    <button>1</button>
-    <button>2</button>
-    <button>3</button>
-    <button>4</button>
+  <div class="my-10 mx-auto justify-center items-center flex ">
+    <button><img src="../public/icons/button-left.svg" class="w-20 h-20" alt=""></button>
+    <button class="px-6 py-3 h-max bg-primary text-white rounded mx-1">1</button>
+    <button class="px-6 py-3 h-max bg-primary text-white rounded mx-1">2</button>
+    <button class="px-6 py-3 h-max bg-primary text-white rounded mx-1">3</button>
+    <button class="px-6 py-3 h-max bg-primary text-white rounded mx-1">4</button>
+    <button><img src="../public/icons/button-right.svg" class="w-20 h-20" alt=""></button>
   </div>
 </template>
   
