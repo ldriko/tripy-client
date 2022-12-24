@@ -1,5 +1,12 @@
-<!-- Page that show filtered event list, searches -->
+<script setup>
+definePageMeta({
+  layout: 'home',
+})
+
+const tags = ref([])
+</script>
 
 <template>
-  <div>Home</div>
+  <trip-filters v-model="tags" />
+  <trip-list :tags="tags" />
 </template>

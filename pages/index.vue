@@ -1,9 +1,11 @@
 <script setup>
-definePageMeta({
-  middleware: 'guest'
-})
+// definePageMeta({
+//   middleware: 'guest',
+// })
+navigateTo('/login')
+// onMounted(() => )
 </script>
 
 <template>
-  <div>Index</div>
+  <div></div>
 </template>

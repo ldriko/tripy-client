@@ -1,25 +1,32 @@
 <script setup>
 const props = defineProps({
   modelValue: {
-    type: String,
-    default: ''
+    default: '',
   },
   label: {
     type: String,
-    default: ''
+    default: '',
   },
   type: {
     type: String,
-    default: 'text'
+    default: 'text',
   },
   placeholder: {
     type: String,
-    default: 'text'
+    default: 'text',
   },
   required: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
+  pill: {
+    type: Boolean,
+    default: false,
+  },
+  small: {
+    type: Boolean,
+    default: false,
+  },
 })
 const emit = defineEmits(['update:modelValue'])
 
@@ -29,12 +36,26 @@ watch(model, () => emit('update:modelValue', model.value))
 </script>
 
 <template>
-  <div class="mb-4">
-    <label v-if="props.label" class="block mb-2 font-medium text-lg">{{ label }}</label>
-    <input v-model="model"
-           :placeholder="props.placeholder"
-           :required="props.required"
-           :type="props.type"
-           class="w-full px-4 py-4 border bg-gray-100 rounded-lg">
+  <div :class="{ 'mb-4': props.label }">
+    <label
+      v-if="props.label"
+      :class="{ 'text-lg': !props.small }"
+      class="block mb-2 font-medium"
+    >
+      {{ label }}
+    </label>
+    <input
+      v-model="model"
+      :placeholder="props.placeholder"
+      :required="props.required"
+      :type="props.type"
+      :class="{
+        'rounded-lg px-4': !props.pill,
+        'rounded-full px-6': props.pill,
+        'py-3': props.small,
+        'py-4': !props.small,
+      }"
+      class="w-full border bg-gray-100"
+    />
   </div>
 </template>

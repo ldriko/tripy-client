@@ -2,26 +2,51 @@
 const props = defineProps({
   color: {
     type: String,
-    default: 'primary'
+    default: 'primary',
   },
   outlined: {
     type: Boolean,
-    default: false
+    default: false,
   },
   type: {
     type: String,
-    default: 'button'
-  }
+    default: 'button',
+  },
+  icon: {
+    type: Boolean,
+    default: false,
+  },
+  small: {
+    type: Boolean,
+    default: false,
+  },
+  large: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const colorClasses = computed(() => ({
-  'bg-primary text-white cursor-pointer': props.color === 'primary' && !props.outlined,
-  'border border-2 border-primary text-primary cursor-pointer': props.color === 'primary' && props.outlined
+  'bg-primary text-white': props.color === 'primary' && !props.outlined,
+  'border border-2 border-primary text-primary':
+    props.color === 'primary' && props.outlined,
+  'bg-white border': props.color === 'white',
+  'bg-green-100 text-green-700 border border-green-700':
+    props.color === 'success',
+  'rounded-full': props.icon,
+  'rounded-lg': !props.icon,
+  'p-4': !props.small,
+  'p-3': props.small,
+  'text-sm': !props.large,
 }))
 </script>
 
 <template>
-  <button :class="colorClasses" :type="props.type" class="p-4 font-medium rounded-lg">
-    <slot/>
+  <button
+    :class="colorClasses"
+    :type="props.type"
+    class="font-medium cursor-pointer"
+  >
+    <slot />
   </button>
 </template>

@@ -1,4 +1,8 @@
 <script setup>
+useHead({
+  title: 'Tripy',
+})
+
 const setViewHeight = () => {
   let vh = window.innerHeight * 0.01
   document.documentElement.style.setProperty('--screen-height', `${vh}px`)

@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link class="text-primary font-semibold underline" to="/register">
-    <slot/>
-  </nuxt-link>
+  <div class="text-primary font-semibold underline">
+    <slot />
+  </div>
 </template>

@@ -5,11 +5,11 @@ defineProps({
     required: true
   },
   width: {
-    type: Number,
+    type: String,
     default: null
   },
   height: {
-    type: Number,
+    type: String,
     default: null
   }
 })
