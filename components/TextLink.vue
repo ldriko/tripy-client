@@ -1,5 +1,17 @@
+<script setup>
+const props = defineProps({
+  to: {
+    type: String,
+    required: true,
+  },
+})
+</script>
+
 <template>
-  <div class="text-primary font-semibold underline">
+  <nuxt-link
+    :to="props.to"
+    class="text-primary font-semibold underline"
+  >
     <slot />
-  </div>
+  </nuxt-link>
 </template>
