@@ -1,4 +1,5 @@
 <script setup>
+defineEmits(['click'])
 const props = defineProps({
   color: {
     type: String,
@@ -24,6 +25,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  loading: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const colorClasses = computed(() => ({
@@ -37,7 +42,7 @@ const colorClasses = computed(() => ({
   'rounded-lg': !props.icon,
   'p-4': !props.small,
   'p-3': props.small,
-  'text-sm': !props.large,
+  // 'text-sm': !props.large,
 }))
 </script>
 
@@ -45,8 +50,10 @@ const colorClasses = computed(() => ({
   <button
     :class="colorClasses"
     :type="props.type"
-    class="font-medium cursor-pointer"
+    class="font-medium cursor-pointer inline-flex items-center"
+    @click="$emit('click')"
   >
+    <loading-spinner v-if="props.loading" />
     <slot />
   </button>
 </template>

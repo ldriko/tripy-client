@@ -44,7 +44,7 @@ const openTrip = (trip) => {
   <div class="flex flex-col gap-2">
     <div
       :class="{ 'animate-pulse': !imageLoaded }"
-      class="rounded-xl h-48 bg-slate-200 transition hover:scale-105 cursor-pointer"
+      class="rounded-xl h-48 bg-slate-300 transition hover:scale-105 cursor-pointer"
       @click="openTrip(props.trip)"
     >
       <img

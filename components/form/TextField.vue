@@ -27,6 +27,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  error: {
+    type: String,
+    default: null,
+  },
 })
 const emit = defineEmits(['update:modelValue'])
 
@@ -39,7 +43,6 @@ watch(model, () => emit('update:modelValue', model.value))
   <div :class="{ 'mb-4': props.label }">
     <label
       v-if="props.label"
-      :class="{ 'text-lg': !props.small }"
       class="block mb-2 font-medium"
     >
       {{ label }}
@@ -57,5 +60,11 @@ watch(model, () => emit('update:modelValue', model.value))
       }"
       class="w-full border bg-gray-100"
     />
+    <small
+      v-if="props.error"
+      class="text-red-400 font-medium"
+    >
+      {{ props.error }}
+    </small>
   </div>
 </template>

@@ -3,9 +3,6 @@ import { useRequest } from '~/composables/request'
 import TextField from '~/components/form/TextField.vue'
 import TextLink from '~/components/TextLink.vue'
 
-useHead({
-  title: 'Tripy',
-})
 definePageMeta({
   layout: 'auth',
   middleware: 'guest',
