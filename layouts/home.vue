@@ -16,7 +16,7 @@ const searchQuery = useState('searchQuery', '')
       pill
     ></form-text-field>
   </div>
-  <div class="max-w-screen-2xl xl:px-4 mx-auto pb-16">
+  <div class="max-w-screen-2xl xl:px-4 px-8 mx-auto pb-16">
     <slot />
   </div>
 </template>

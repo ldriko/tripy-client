@@ -6,6 +6,7 @@ definePageMeta({
 })
 
 const route = useRoute()
+const admin = useAdmin()
 
 const isLoading = ref(false)
 const trip = ref(null)
@@ -93,7 +94,7 @@ onMounted(getTrip)
           @click="activeImage = n"
         >
           <img
-            :src="`http://localhost:8000/storage/picture-event/${picture.images_name}`"
+            :src="`${admin.baseURL}/storage/picture-event/${picture.images_name}`"
             alt="Alt"
             class="object-cover h-full w-full transition-all rounded-lg"
           />

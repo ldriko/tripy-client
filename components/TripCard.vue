@@ -15,6 +15,8 @@ const props = defineProps({
   },
 })
 
+const admin = useAdmin()
+
 const imageLoaded = ref(false)
 
 const getMinimumVotes = (trip) => {
@@ -49,7 +51,7 @@ const openTrip = (trip) => {
         v-show="imageLoaded"
         :src="
           props.trip.pictures?.length
-            ? `http://localhost:8000/storage/picture-event/${props.trip.pictures[0].images_name}`
+            ? `${admin.baseURL}/storage/picture-event/${props.trip.pictures[0].images_name}`
             : 'https://picsum.photos/400/400'
         "
         alt="Trip"

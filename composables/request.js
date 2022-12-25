@@ -2,7 +2,7 @@ export const useFetchCookies = async () => {
   const config = useRuntimeConfig()
 
   await $fetch.raw('/../sanctum/csrf-cookie', {
-    baseURL: config.public.baseURL,
+    baseURL: config.public.apiBaseURL,
     credentials: 'include',
   })
 }
@@ -18,6 +18,8 @@ export const useRequest = async (url, options = {}) => {
     token = useCookie(csrf_cookie).value
   }
 
+  console.log(config.public)
+
   const headers = {
     Accept: 'application/json',
     'Cache-Control': 'no-cache',
@@ -25,7 +27,7 @@ export const useRequest = async (url, options = {}) => {
     ...options?.headers,
   }
   const opts = options ? (({ headers, ...opts }) => opts)(options) : null
-  const baseURL = !options?.baseURL ? config.public.baseURL : options.baseURL
+  const baseURL = !options?.baseURL ? config.public.apiBaseURL : options.baseURL
 
   return useFetch(url, {
     baseURL: baseURL,
