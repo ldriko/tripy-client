@@ -8,6 +8,7 @@ export const useFetchCookies = async () => {
 }
 
 export const useRequest = async (url, options = {}) => {
+  const sessionStore = useSessionStore()
   const config = useRuntimeConfig()
   const csrf_cookie = 'XSRF-TOKEN'
   let token = useCookie(csrf_cookie)?.value
@@ -18,8 +19,6 @@ export const useRequest = async (url, options = {}) => {
     token = useCookie(csrf_cookie).value
   }
 
-  console.log(config.public)
-
   const headers = {
     Accept: 'application/json',
     'Cache-Control': 'no-cache',
@@ -29,10 +28,17 @@ export const useRequest = async (url, options = {}) => {
   const opts = options ? (({ headers, ...opts }) => opts)(options) : null
   const baseURL = !options?.baseURL ? config.public.apiBaseURL : options.baseURL
 
-  return useFetch(url, {
+  const response = await useFetch(url, {
     baseURL: baseURL,
     credentials: 'include',
     headers,
     ...opts,
   })
+
+  if (response.error.value?.status === 401) {
+    sessionStore.clear()
+    navigateTo('/login')
+  }
+
+  return response
 }
